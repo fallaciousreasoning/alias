@@ -1,2 +1,2 @@
 @ECHO off
-python "%~dp0alias.py" %* %CD% 2>&1
+python "%~dp0alias.py" %* %~dp0 2>&1
