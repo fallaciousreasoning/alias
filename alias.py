@@ -60,6 +60,10 @@ def print_help(filename):
     print(help_text)
 
 if __name__ == '__main__':
+    if '--list' in sys.argv or '-l' in sys.argv:
+        list_aliases(sys.argv[-1])
+        sys.exit(0)
+
     if len(sys.argv) < 3:
         print(sys.argv)
         print_help(sys.argv[0])
