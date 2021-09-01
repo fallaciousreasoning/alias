@@ -45,10 +45,10 @@ def list_aliases(cd=None):
         aliases.append(file[:-4])
         commands.append(command)
 
-        longest_alias = max(longest_alias, len(aliases[-1]))
-        longest_command = max(longest_command, len(commands[-1]))
+        longest_alias = max(longest_alias, len(aliases[-1]), len("Alias"))
+        longest_command = max(longest_command, len(commands[-1]), len("Command"))
 
-    row_format = "{:<" + str(longest_command + 4) + "}" + "{:<" + str(longest_alias + 4) + "}"
+    row_format = "{:<" + str(longest_alias + 4) + "}" + "{:<" + str(longest_command + 4) + "}"
     print(row_format.format("Alias", "Command"))
 
     for i in range(len(aliases)):
