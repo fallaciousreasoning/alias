@@ -70,7 +70,7 @@ def print_help(filename):
 if __name__ == '__main__':
     if '--help' in sys.argv or '-h' in sys.argv:
         print_help()
-        sys.exit(1)
+        sys.exit(0)
 
     if '--list' in sys.argv or '-l' in sys.argv:
         list_aliases(sys.argv[-1])
