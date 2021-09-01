@@ -15,7 +15,7 @@ def get_dir(cd=None):
         os.makedirs(path)
     return path
 
-def create_alias(command, alias, cd=None):
+def create_alias(alias, command, cd=None):
     d = get_dir(cd)
     with open(f'{d}\\{alias}.cmd', 'w') as f:
         f.write(BAT_FILE_FORMAT.format(command))
@@ -77,7 +77,7 @@ if __name__ == '__main__':
         sys.exit(0)
 
     if '--delete' in sys.argv or '-D' in sys.argv:
-        delete_alias(sys.argv[1])
+        delete_alias(sys.argv[2], sys.argv[-1])
         sys.exit(0)
 
     if len(sys.argv) < 3:
