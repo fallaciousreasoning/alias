@@ -3,6 +3,8 @@ import sys
 
 import re
 
+from pathlib import Path
+
 ALIASES_DIRECTORY = 'aliases'
 BAT_FILE_FORMAT = """
     @ECHO OFF
@@ -54,16 +56,17 @@ def list_aliases(cd=None):
     for i in range(len(aliases)):
         print(row_format.format(aliases[i], commands[i]))
 
-def print_help(filename):
+def print_help():
+    name = Path(__file__).name
     help_text = f"""
         Wrong number of parameters!
         Correct usage is:
-            {filename} [alias] [command]
+            {name} [alias] [command]
         or
-            {filename} --list
+            {name} --list
         or
-            {filename} --delete [alias]
-    """ % filename
+            {name} --delete [alias]
+    """
 
     print(help_text)
 
