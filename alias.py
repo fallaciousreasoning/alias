@@ -12,7 +12,8 @@ BAT_FILE_FORMAT = """
 """
 
 def get_dir(cd=None):
-    path = ('' if cd is None else cd + '\\') + ALIASES_DIRECTORY
+    print(cd)
+    path = os.path.join(cd or '', ALIASES_DIRECTORY)
     if not os.path.exists(path):
         os.makedirs(path)
     return path
@@ -71,16 +72,17 @@ def print_help():
     print(help_text)
 
 if __name__ == '__main__':
+    cur_dir = os.path.dirname(os.path.realpath(__file__))
     if '--help' in sys.argv or '-h' in sys.argv:
         print_help()
         sys.exit(0)
 
     if '--list' in sys.argv or '-l' in sys.argv:
-        list_aliases(sys.argv[-1])
+        list_aliases(cur_dir)
         sys.exit(0)
 
     if '--delete' in sys.argv or '-D' in sys.argv:
-        delete_alias(sys.argv[2], sys.argv[-1])
+        delete_alias(sys.argv[2], cur_dir)
         sys.exit(0)
 
     if len(sys.argv) < 3:
@@ -88,4 +90,4 @@ if __name__ == '__main__':
         print_help(sys.argv[0])
         sys.exit(-1)
 
-    create_alias(sys.argv[1], sys.argv[2], None if len(sys.argv) < 4 else sys.argv[3])
+    create_alias(sys.argv[1], sys.argv[2], cur_dir)
